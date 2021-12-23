@@ -16,15 +16,16 @@ import { Bell as BellIcon } from '../icons/bell';
 import { Menu as MenuIcon } from '../icons/menu';
 import { Search as SearchIcon } from '../icons/search';
 import { Help as HelpIcon } from '../icons/help';
+import { ArrowLeft as ArrowLeftIcon } from '../icons/arrow-left';
 import { AccountPopover } from './account-popover';
 import { NotificationsPopover } from './notifications-popover';
 import { ContentSearchDialog } from "../components/dashboard/content-search-dialog";
 import PropTypes from "prop-types";
-
-
+import Router from 'next/router'
 interface DashboardNavbarProps {
     title:String,
     desc: String
+    showBackButton: Boolean,
     onOpenSidebar?: () => void;
 }
 
@@ -178,8 +179,7 @@ const AccountButton = () => {
 };
 
 export const DashboardNavbar: FC<DashboardNavbarProps> = (props) => {
-  const { title, desc, onOpenSidebar, ...other } = props;
-
+  const { showBackButton, title, desc, onOpenSidebar, ...other } = props;
   return (
     <>
       <DashboardNavbarRoot
@@ -215,6 +215,7 @@ export const DashboardNavbar: FC<DashboardNavbarProps> = (props) => {
           </IconButton>
           <Box sx={{ flexGrow: 1 }} >
              <Typography variant="h5" color="#1F2738" sx={{display: 'flex', alignItems: 'center'}}>
+                 {showBackButton ? <ArrowLeftIcon  onClick={() => Router.back()} sx={{mr: 2, cursor: 'pointer'}}/> : ''}
                  {title ? title + ' ': ''}
                  {desc ? (<Tooltip  title={desc}><HelpIcon sx={{ml: 1}}/>
                  </Tooltip>) : '' }
@@ -240,4 +241,5 @@ export const DashboardNavbar: FC<DashboardNavbarProps> = (props) => {
 DashboardNavbar.propTypes = {
     title: PropTypes.string,
     desc: PropTypes.string,
+    showBackButton: PropTypes.bool
 };

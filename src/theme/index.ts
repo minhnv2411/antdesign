@@ -24,17 +24,26 @@ interface SidebarColor {
   active: string;
 }
 
+interface Status {
+  statusBG: string,
+  statusTXT: string,
+}
+
 declare module '@mui/material/styles' {
   interface Palette {
     neutral?: Neutral;
     gradient?: Gradient;
     sidebarColor?: SidebarColor;
+    statusSuccess?: Status;
+    statusWaiting?: Status;
   }
 
   interface PaletteOptions {
     neutral?: Neutral;
     gradient?: Gradient;
     sidebarColor?: SidebarColor;
+    statusSuccess?: Status;
+    statusWaiting?: Status;
   }
 }
 

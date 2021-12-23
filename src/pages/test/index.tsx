@@ -35,7 +35,7 @@ const Hero = () => {
                     display: 'flex',
                     flexDirection: 'row',
                     maxHeight: 216,
-                    background: 'url(/images/TestBanner.png)',
+                    background: 'url(/images/TestBanner.webp)',
                     backgroundSize: 'cover',
                 }}
             >

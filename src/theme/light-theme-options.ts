@@ -54,11 +54,21 @@ const success = {
   contrastText: '#FFFFFF',
 };
 
+const statusSuccess = {
+  statusBG: '#E6FF9D',
+  statusTXT: '#2C3A02',
+};
+
+const statusWaiting = {
+  statusBG: '#F0D9FF',
+  statusTXT: '#9E00FF',
+};
+
 const info = {
   main: '#2196F3',
   light: '#64B6F7',
   dark: '#0B79D0',
-  contrastText: '#FFFFFF',
+  contrastText: '#FFFFFF'
 };
 
 const warning = {
@@ -201,7 +211,8 @@ export const lightThemeOptions: ThemeOptions = {
     warning,
     gradient,
     sidebarColor,
-
+    statusSuccess,
+    statusWaiting
   },
   shadows: [
     'none',

@@ -5,11 +5,13 @@ import { useState } from 'react';
 import { DashboardNavbar } from './dashboard-navbar';
 import { DashboardSidebar } from './dashboard-sidebar';
 import PropTypes from "prop-types";
+import {DashboardSidebarItem} from "./dashboard-sidebar-item";
 
 interface DashboardLayoutProps {
   children?: ReactNode;
     title?:String,
     desc?: String,
+    showBackButton?: boolean
 }
 
 const DashboardLayoutRoot = styled('div')(({ theme }) => ({
@@ -23,7 +25,7 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
 }));
 
 export const DashboardLayout: FC<DashboardLayoutProps> = (props) => {
-  const { children, title, desc } = props;
+  const { children, title, desc, showBackButton } = props;
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
   return (
@@ -40,14 +42,17 @@ export const DashboardLayout: FC<DashboardLayoutProps> = (props) => {
           {children}
         </Box>
       </DashboardLayoutRoot>
-      <DashboardNavbar title={title} desc={desc} onOpenSidebar={(): void => setIsSidebarOpen(true)} />
+      <DashboardNavbar showBackButton={showBackButton} title={title} desc={desc} onOpenSidebar={(): void => setIsSidebarOpen(true)} />
       <DashboardSidebar onClose={(): void => setIsSidebarOpen(false)} open={isSidebarOpen} />
     </>
   );
 };
-
-
 DashboardLayout.propTypes = {
     title: PropTypes.string,
     desc: PropTypes.string,
+    showBackButton: PropTypes.bool
+};
+
+DashboardLayout.defaultProps = {
+    showBackButton: false
 };
